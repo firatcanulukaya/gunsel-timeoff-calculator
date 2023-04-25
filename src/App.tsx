@@ -1,21 +1,11 @@
 import React, {useRef, useState} from 'react'
-import {QuestionCircleOutlined} from "@ant-design/icons";
-import {Popover} from "antd";
-
-const Hint = ({children}: {children: string}) => {
-    return (
-        <Popover className="cursor-help" content={children}>
-            <QuestionCircleOutlined/>
-        </Popover>
-    )
-}
-
+import Input from "./components/Input";
 
 function App() {
     const shiftRef = useRef<HTMLInputElement>(null)
     const minutesRef = useRef<HTMLInputElement>(null)
     const pendingTimeOffsRef = useRef<HTMLInputElement>(null)
-    const [result, setResult] = useState<number>(0)
+    const [result, setResult] = useState<number>(225)
 
     const handleCalculate = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -43,24 +33,10 @@ function App() {
     </div>
     <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={handleCalculate}>
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-            <div>
-                <label htmlFor="shift" className="block text-sm font-semibold leading-6 text-gray-900 flex items-center gap-2">Shift (hours) <Hint>Write your shift in hours. Usually employees does 8 hours shift (Exclude your break and lunch break)</Hint></label>
-                <div className="mt-2.5">
-                    <input type="text" ref={shiftRef} name="shift" id="shift" autoComplete="shift" className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"/>
-                </div>
-            </div>
-            <div>
-                <label htmlFor="minutes" className="block text-sm font-semibold leading-6 text-gray-900 flex items-center gap-2">Minus Minutes <Hint>Write your final minutes (Should be positive number)</Hint></label>
-                <div className="mt-2.5">
-                    <input type="text" ref={minutesRef} name="minutes" id="minutes" autoComplete="minutes" className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"/>
-                </div>
-            </div>
-            <div className="sm:col-span-2">
-                <label htmlFor="pending-time-offs" className="block text-sm font-semibold leading-6 text-gray-900 flex items-center gap-2">Pending Time offs (day)</label>
-                <div className="mt-2.5">
-                    <input type="text" ref={pendingTimeOffsRef} name="pending-time-offs" id="pending-time-offs" autoComplete="pending-time-offs" className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"/>
-                </div>
-            </div>
+            <Input placeholder="8" id="shift" title="Shift (hours)" hint="Write your shift in hours. Usually employees does 8 hours shift (Exclude your break and lunch break)"/>
+            <Input placeholder="863" id="minutes" title="Minus Minutes" hint="Write your final minutes (Should be positive number)"/>
+            <Input placeholder="1.33" id="pending-time-offs" title="Pending Time offs (in days)" span/>
+
             <div className="sm:col-span-2">
                 <label htmlFor="result" className="block text-sm font-semibold leading-6 text-gray-900">Result (minute)</label>
                 <div className="mt-2.5">
