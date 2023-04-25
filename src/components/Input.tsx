@@ -10,6 +10,7 @@ type InputProps = {
     span?: boolean
 }
 
+//eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Input = forwardRef(({placeholder, disabled = false, id, title, hint, span = false}: InputProps, ref: any) => {
     return (
         <div className={span ? "sm:col-span-2" : ""}>
