@@ -1,7 +1,7 @@
 {
   "name": "gunsel-timeoff-calculator",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -33,6 +33,6 @@
   },
   "main": "index.js",
   "author": "firatcanulukaya",
-  "license": "ISC",
+  "license": "MIT",
   "description": "Calculates pending time off's for employees in GÜNSEL"
 }
