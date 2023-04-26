@@ -15,7 +15,7 @@ function App() {
         const minutes = Number(minutesRef.current.value)
         const pendingTimeOffs = Number(pendingTimeOffsRef.current.value)
 
-        setResult(Math.abs(Math.floor((pendingTimeOffs * (shift * 60)) - minutes)))
+        setResult(Math.floor((pendingTimeOffs * (shift * 60)) - minutes))
     }
 
   return (
@@ -33,9 +33,9 @@ function App() {
     </div>
     <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={handleCalculate}>
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-            <Input placeholder="8" id="shift" title="Shift (in hours)" hint="Write your shift in hours. Usually employees does 8 hours shift (Exclude your break and lunch break)"/>
-            <Input placeholder="863" id="minutes" title="Minus Minutes" hint="Write your final minutes (Should be positive number)"/>
-            <Input placeholder="1.33" id="pending-time-offs" title="Pending Time offs (in days)" span/>
+            <Input ref={shiftRef} placeholder="8" id="shift" title="Shift (in hours)" hint="Write your shift in hours. Usually employees does 8 hours shift (Exclude your break and lunch break)"/>
+            <Input ref={minutesRef} placeholder="863" id="minutes" title="Minus Minutes" hint="Write your final minutes (Should be positive number)"/>
+            <Input ref={pendingTimeOffsRef} placeholder="1.33" id="pending-time-offs" title="Pending Time offs (in days)" span/>
 
             <div className="sm:col-span-2">
                 <label htmlFor="result" className="block text-sm font-semibold leading-6 text-gray-900">Result (in minutes)</label>
